@@ -9,18 +9,21 @@ public class Main {
         Book book1 = new Book("Java Basics", "John Doe", "123456");
         Book book2 = new Book("OOP Concepts", "Jane Smith", "789101");
 
-        LibraryMember member1 = new LibraryMember("Alice", 1);
-        LibraryMember member2 = new LibraryMember("Bob", 2);
-
         library.addBook(book1);
         library.addBook(book2);
-        library.addMember(member1);
-        library.addMember(member2);
 
-        library.printBooks();
-        library.borrowBook(book1);
-        library.printBooks();
-        library.returnBook(book1);
-        library.printBooks();
+        LibraryMember alice = new LibraryMember("Alice", 1);
+        LibraryMember bob = new LibraryMember("Bob", 2);
+
+        library.addMember(alice);
+        library.addMember(bob);
+
+        System.out.println("Reserving a book...");
+        library.reserveBook(alice, book2);
+        library.displayReservedBooks(alice);
+
+        System.out.println("Cancelling reservation...");
+        library.cancelReservation(alice, book2);
+        library.displayReservedBooks(alice);
     }
 }
