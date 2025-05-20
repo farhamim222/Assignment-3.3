@@ -1,14 +1,26 @@
+import model.Book;
+import model.LibraryMember;
+import system.Library;
+
 public class Main {
     public static void main(String[] args) {
-        BankAccount account1 = new BankAccount(1000);
-        BankAccount account2 = new BankAccount(2000);
+        Library library = new Library();
 
-        account1.deposit(500);
-        account2.withdraw(800);
+        Book book1 = new Book("Java Basics", "John Doe", "123456");
+        Book book2 = new Book("OOP Concepts", "Jane Smith", "789101");
 
-        System.out.println("Account " + account1.getAccountNumber() + " balance: " + account1.getBalance());
-        System.out.println("Account " + account2.getAccountNumber() + " balance: " + account2.getBalance());
+        LibraryMember member1 = new LibraryMember("Alice", 1);
+        LibraryMember member2 = new LibraryMember("Bob", 2);
 
-        System.out.println("Total number of accounts: " + BankAccount.getTotalAccounts());
+        library.addBook(book1);
+        library.addBook(book2);
+        library.addMember(member1);
+        library.addMember(member2);
+
+        library.printBooks();
+        library.borrowBook(book1);
+        library.printBooks();
+        library.returnBook(book1);
+        library.printBooks();
     }
 }
